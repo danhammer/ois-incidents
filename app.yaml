@@ -1,0 +1,19 @@
+application: ois-incidents
+version: v1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: jinja2
+  version: "latest"
+- name: webapp2
+  version: "latest"
+- name: ssl
+  version: "latest"
+- name: pycrypto
+  version: "latest" 
+
+handlers:
+- url: /.*
+  script: api.handlers
