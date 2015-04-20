@@ -25,6 +25,8 @@ def _search(q, limit, index='ois', doc_type='incident'):
 class OISSearchHandler(webapp2.RequestHandler):
 
     def get(self):
+        self.response.headers.add_header("Access-Control-Allow-Origin", "*")
+        
         """Writes search results to endpoint"""
         query = self.request.get('query', '*')
         limit = self.request.get('limit', 10)
@@ -37,6 +39,8 @@ class OISSearchHandler(webapp2.RequestHandler):
 class OISCountHandler(webapp2.RequestHandler):
 
     def get(self, index='ois', doc_type='incident'):
+        self.response.headers.add_header("Access-Control-Allow-Origin", "*")
+
         """Writes search results to endpoint"""
         url = os.path.join(ELASTIC_ENDPOINT, index, doc_type, '_count')
         res = urlfetch.fetch(url)
